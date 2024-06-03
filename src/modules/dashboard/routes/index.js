@@ -3,11 +3,13 @@ import Dashboard from "@/modules/dashboard/views/index.vue";
 
 const routes = [
   {
-    path: "/a",
+    path: "/",
+    name: "AdminLayout",
     component: AdminLayout,
     children: [
       {
         path: "/dashboard",
+        name: "Dashboard",
         component: Dashboard,
       },
     ],

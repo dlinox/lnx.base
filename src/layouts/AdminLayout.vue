@@ -1,194 +1,111 @@
 <template>
   <v-app id="inspire">
-    <v-system-bar>
-      <v-spacer></v-spacer>
-
-      <v-icon>mdi-square</v-icon>
-
-      <v-icon>mdi-circle</v-icon>
-
-      <v-icon>mdi-triangle</v-icon>
-    </v-system-bar>
-
-    <v-app-bar color="grey-lighten-4" height="72" flat>
-      <v-avatar
-        class="ms-2"
-        color="surface-variant"
-        size="32"
-        variant="flat"
-      ></v-avatar>
-      <v-avatar
-        class="mx-2"
-        color="surface-variant"
-        size="32"
-        variant="flat"
-      ></v-avatar>
-
-      <v-btn
-        class="me-2"
-        color="grey"
-        height="40"
-        variant="flat"
-        width="80"
-      ></v-btn>
-
-      <v-btn
-        class="me-2"
-        color="grey"
-        height="40"
-        variant="flat"
-        width="100"
-      ></v-btn>
-
-      <v-btn
-        class="me-2"
-        color="grey"
-        height="40"
-        variant="flat"
-        width="120"
-      ></v-btn>
-
-      <v-btn
-        class="me-2"
-        color="grey"
-        height="40"
-        variant="flat"
-        width="120"
-      ></v-btn>
-
-      <v-spacer></v-spacer>
+    <v-app-bar color="grey-lighten-4" flat>
+      <v-btn icon @click="drawer = !drawer">
+        <v-icon>mdi-menu</v-icon>
+      </v-btn>
+      <v-toolbar-title>G-DREWS</v-toolbar-title>
     </v-app-bar>
 
-    <v-footer color="grey" height="44" app></v-footer>
+    <v-navigation-drawer app v-model="drawer" width="200">
+      <v-list nav>
+        <v-list-item
+          to="/dashboard"
+          active-class="active"
+          exact
+          title="Dashboard"
+          prepend-icon="mdi-home"
+        />
+        <v-list-item
+          to="/tareos"
+          active-class="active"
+          exact
+          title="Tareos"
+          prepend-icon="mdi-account"
+        />
+        <v-list-item
+          to="/alquiler"
+          active-class="active"
+          exact
+          title="Alquiler"
+          prepend-icon="mdi-account"
+        />
+        <v-list-item
+          to="/valoraciones"
+          active-class="active"
+          exact
+          title="Valoraciones"
+          prepend-icon="mdi-account"
+        />
+        <v-list-group value="Seguridad">
+          <template v-slot:activator="{ props }">
+            <v-list-item v-bind="props" title="Seguridad"></v-list-item>
+          </template>
 
-    <v-navigation-drawer floating>
-      <div class="d-flex px-2 my-2">
-        <v-btn
-          class="flex-grow-1"
-          color="grey"
-          height="40"
-          variant="flat"
-        ></v-btn>
-
-        <v-avatar
-          class="ms-2"
-          color="surface-variant"
-          variant="flat"
-          rounded
-        ></v-avatar>
-      </div>
-
-      <div class="d-flex px-2 my-2 align-center">
-        <v-btn
-          class="flex-grow-1 me-2"
-          color="grey-lighten-4"
-          height="40"
-          variant="flat"
-        ></v-btn>
-
-        <v-avatar color="surface-variant" size="18"></v-avatar>
-
-        <v-avatar class="ms-1" color="surface-variant" size="18"></v-avatar>
-      </div>
-
-      <div class="px-2 my-2">
-        <v-text-field
-          class="mb-4"
-          density="compact"
-          prepend-inner-icon="mdi-magnify"
-          variant="solo-filled"
-          flat
-          hide-details
-        ></v-text-field>
-
-        <v-sheet
-          class="mb-2"
-          color="surface-variant"
-          height="24"
-          rounded="pill"
-          width="50%"
-        ></v-sheet>
-
-        <v-sheet
-          class="mb-1"
-          color="grey-lighten-1"
-          height="12"
-          rounded="pill"
-          width="40%"
-        ></v-sheet>
-
-        <v-sheet
-          class="mb-1"
-          color="grey-lighten-1"
-          height="12"
-          rounded="pill"
-          width="20%"
-        ></v-sheet>
-
-        <v-sheet
-          class="mb-1"
-          color="grey-lighten-1"
-          height="12"
-          rounded="pill"
-          width="90%"
-        ></v-sheet>
-
-        <v-sheet
-          color="grey-lighten-1"
-          height="12"
-          rounded="pill"
-          width="70%"
-        ></v-sheet>
-
-        <v-divider class="my-6"></v-divider>
-
-        <v-sheet
-          class="mb-2"
-          color="surface-variant"
-          height="24"
-          rounded="pill"
-          width="30%"
-        ></v-sheet>
-
-        <v-sheet
-          class="mb-1"
-          color="grey-lighten-1"
-          height="12"
-          rounded="pill"
-          width="65%"
-        ></v-sheet>
-
-        <v-sheet
-          class="mb-1"
-          color="grey-lighten-1"
-          height="12"
-          rounded="pill"
-          width="70%"
-        ></v-sheet>
-
-        <v-sheet
-          class="mb-1"
-          color="grey-lighten-1"
-          height="12"
-          rounded="pill"
-          width="40%"
-        ></v-sheet>
-
-        <v-sheet
-          color="grey-lighten-1"
-          height="12"
-          rounded="pill"
-          width="100%"
-        ></v-sheet>
-
-        <v-divider class="my-6"></v-divider>
-      </div>
+          <v-list-item
+            to="/seguridad/usuarios"
+            active-class="active"
+            exact
+            title="Usuarios"
+          />
+          <v-list-item
+            to="/seguridad/roles"
+            active-class="active"
+            exact
+            title="Roles"
+          />
+        </v-list-group>
+      </v-list>
     </v-navigation-drawer>
 
     <v-main>
-      <RouterView />
+      <router-view></router-view>
     </v-main>
   </v-app>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+
+const drawer = ref(true);
+
+const menu = ref([
+  {
+    title: "Dashboard",
+    icon: "mdi-home",
+    route: "/dashboard",
+  },
+  {
+    title: "Tareos",
+    icon: "mdi-account",
+    route: "/tareos",
+  },
+  {
+    title: "Alquiler",
+    icon: "mdi-account",
+    route: "/alquiler",
+  },
+  {
+    title: "Valoraciones",
+    icon: "mdi-account",
+    route: "/valoraciones",
+  },
+  {
+    title: "Seguridad",
+    icon: "mdi-account",
+    route: null,
+    children: [
+      {
+        title: "Usuarios",
+        icon: "mdi-account",
+        route: "/seguridad/usuarios",
+      },
+      {
+        title: "Roles",
+        icon: "mdi-account",
+        route: "/seguridad/roles",
+      },
+    ],
+  },
+]);
+</script>

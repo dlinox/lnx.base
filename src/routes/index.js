@@ -1,4 +1,4 @@
-import { createMemoryHistory, createRouter } from 'vue-router'
+import { createWebHistory, createRouter } from 'vue-router'
 
 import AuthRoutes from '@/modules/auth/routes/'
 import DashboardRoutes from '@/modules/dashboard/routes/'
@@ -8,8 +8,10 @@ const routes = [
     ...DashboardRoutes,
 ]
 
+console.log(routes)
+
 const router = createRouter({
-    history: createMemoryHistory(),
+    history: createWebHistory(),
     routes,
 })
 

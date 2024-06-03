@@ -1,7 +1,9 @@
 <template>
   <v-row class="h-100" no-gutters>
     <v-col cols="12" md="6" class="col-wrapper-form">
-      <div></div>
+      <div>
+ 
+      </div>
       <div>
         <v-card class="" elevation="0">
           <div class="pa-4">
@@ -79,6 +81,7 @@
 </template>
 <script setup>
 import { ref } from "vue";
+
 
 const showPassword = ref();
 const form = ref({
